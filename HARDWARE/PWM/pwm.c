@@ -69,7 +69,8 @@ void TIM2_Cap_Init(u16 arr,u16 psc)
  	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);  //使能GPIOA时钟
 	
 	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;  //PA0 清除之前设置  
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; //PA0 输入  
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; //PA0 输入 
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_ResetBits(GPIOA,GPIO_Pin_0);						 //PA0 下拉
 	
@@ -89,9 +90,9 @@ void TIM2_Cap_Init(u16 arr,u16 psc)
 	TIM_ICInit(TIM2, &TIM2_ICInitStructure);
 	
 	//中断分组初始化
-	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;  //TIM2中断
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;  //先占优先级2级
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;  //从优先级0级
+	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;  		//TIM2中断
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  //先占优先级2级
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;  //从优先级0级
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道被使能
 	NVIC_Init(&NVIC_InitStructure);  //根据NVIC_InitStruct中指定的参数初始化外设NVIC寄存器 
 	
@@ -111,8 +112,7 @@ void TIM2_IRQHandler(void)
 
  	if((TIM2CH1_CAPTURE_STA&0X80)==0)//还未成功捕获	
 	{	  
-		if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
-		 
+		if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)	 
 		{	    
 			if(TIM2CH1_CAPTURE_STA&0X40)//已经捕获到高电平了
 			{
@@ -126,11 +126,13 @@ void TIM2_IRQHandler(void)
 	if (TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)//捕获1发生捕获事件
 		{	
 			if(TIM2CH1_CAPTURE_STA&0X40)		//捕获到一个下降沿 		
-			{	  			
+			{
 				TIM2CH1_CAPTURE_STA|=0X80;		//标记成功捕获到一次上升沿
 				TIM2CH1_CAPTURE_VAL=TIM_GetCapture1(TIM2);
-		   		TIM_OC1PolarityConfig(TIM2,TIM_ICPolarity_Rising); //CC1P=0 设置为上升沿捕获
-			}else  								//还未开始,第一次捕获上升沿
+				
+		   	TIM_OC1PolarityConfig(TIM2,TIM_ICPolarity_Rising); //CC1P=0 设置为上升沿捕获
+			}
+			else  								//还未开始,第一次捕获上升沿
 			{
 				TIM2CH1_CAPTURE_STA=0;			//清空
 				TIM2CH1_CAPTURE_VAL=0;
