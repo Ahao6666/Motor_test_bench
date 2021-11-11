@@ -47,9 +47,10 @@ void  Adc_Init(void)
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
  
-	 GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;
-	 GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;			//模拟输入引脚
+	 GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5;	//PC0/1/2/3/4/5
+	 GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
 	 GPIO_Init(GPIOC, &GPIO_InitStructure);
+
 	 ADC_DMA_Config();
 	   
 	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
@@ -62,13 +63,15 @@ void  Adc_Init(void)
 	 ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	//软件启动转换
 	 ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;					//转换结果右对齐
 	 ADC_InitStructure.ADC_NbrOfChannel = Channel_Num;						//通道数目
-	 ADC_Init(ADC1, &ADC_InitStructure); 
+	 ADC_Init(ADC1, &ADC_InitStructure);
  
 
 	 ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 1, ADC_SampleTime_55Cycles5);	//通道，转换次序，转换时间
 	 ADC_RegularChannelConfig(ADC1, ADC_Channel_11, 2, ADC_SampleTime_55Cycles5);
 	 ADC_RegularChannelConfig(ADC1, ADC_Channel_12, 3, ADC_SampleTime_55Cycles5);
 	 ADC_RegularChannelConfig(ADC1, ADC_Channel_13, 4, ADC_SampleTime_55Cycles5);
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_14, 5, ADC_SampleTime_55Cycles5);
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_15, 6, ADC_SampleTime_55Cycles5);
  
 	   
 	 ADC_DMACmd(ADC1, ENABLE);	   

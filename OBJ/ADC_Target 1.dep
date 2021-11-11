@@ -1,5 +1,5 @@
 Dependencies for Project 'ADC', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x61700545)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\PWM -I ..\HARDWARE\SPI -I ..\HARDWARE\SD -I ..\HARDWARE\MALLOC-I.\RTE\_Target_1-ID:\MDK5\install\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\MDK5\install\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x618CD650)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\PWM -I ..\HARDWARE\SPI -I ..\HARDWARE\SD -I ..\HARDWARE\MALLOC-I.\RTE\_Target_1-ID:\MDK5\install\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\MDK5\install\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\HARDWARE\LED\led.h)(0x532ACAF4)
 I (..\SYSTEM\sys\sys.h)(0x550F951C)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -169,7 +169,7 @@ I (..\HARDWARE\LCD\font.h)(0x52C52FE8)
 I (..\SYSTEM\usart\usart.h)(0x50517A82)
 I (D:\MDK5\install\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (..\SYSTEM\delay\delay.h)(0x55CC2E5A)
-F (..\HARDWARE\ADC\adc.c)(0x617019A6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\PWM -I ..\HARDWARE\SPI -I ..\HARDWARE\SD -I ..\HARDWARE\MALLOC-I.\RTE\_Target_1-ID:\MDK5\install\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\MDK5\install\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\adc.o --omf_browse ..\obj\adc.crf --depend ..\obj\adc.d)
+F (..\HARDWARE\ADC\adc.c)(0x618C88E7)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LED -I ..\HARDWARE\LCD -I ..\HARDWARE\ADC -I ..\HARDWARE\PWM -I ..\HARDWARE\SPI -I ..\HARDWARE\SD -I ..\HARDWARE\MALLOC-I.\RTE\_Target_1-ID:\MDK5\install\Keil\STM32F1xx_DFP\2.3.0\Device\Include-ID:\MDK5\install\ARM\CMSIS\Include-D__UVISION_VERSION="525" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\adc.o --omf_browse ..\obj\adc.crf --depend ..\obj\adc.d)
 I (..\HARDWARE\ADC\adc.h)(0x617019CE)
 I (..\SYSTEM\sys\sys.h)(0x550F951C)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -656,4 +656,4 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
-F (..\README.TXT)(0x61601402)()
+F (..\README.TXT)(0x618C8338)()
