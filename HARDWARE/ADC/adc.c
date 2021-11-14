@@ -42,16 +42,21 @@ void ADC_DMA_Config(void)
 //我们默认将开启通道0~3																	   
 void  Adc_Init(void)
 { 	
-	ADC_InitTypeDef ADC_InitStructure; 
-	GPIO_InitTypeDef GPIO_InitStructure;
+	 ADC_InitTypeDef ADC_InitStructure; 
+	 GPIO_InitTypeDef GPIO_InitStructure;
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
- 
-	 GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5;	//PC0/1/2/3/4/5
-	 GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	 GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4;   
+	 GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;			//模拟输入引脚
+	 GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	 GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_3|GPIO_Pin_4;   
+	 GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;			//模拟输入引脚
 	 GPIO_Init(GPIOC, &GPIO_InitStructure);
-
+	
 	 ADC_DMA_Config();
+	
 	   
 	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
 	 RCC_ADCCLKConfig(RCC_PCLK2_Div6); 		//设置ADC分频因子6 72M/6=12,ADC最大时间不能超过14M
@@ -63,16 +68,15 @@ void  Adc_Init(void)
 	 ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	//软件启动转换
 	 ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;					//转换结果右对齐
 	 ADC_InitStructure.ADC_NbrOfChannel = Channel_Num;						//通道数目
-	 ADC_Init(ADC1, &ADC_InitStructure);
+	 ADC_Init(ADC1, &ADC_InitStructure); 
  
 
-	 ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 1, ADC_SampleTime_55Cycles5);	//通道，转换次序，转换时间
-	 ADC_RegularChannelConfig(ADC1, ADC_Channel_11, 2, ADC_SampleTime_55Cycles5);
-	 ADC_RegularChannelConfig(ADC1, ADC_Channel_12, 3, ADC_SampleTime_55Cycles5);
-	 ADC_RegularChannelConfig(ADC1, ADC_Channel_13, 4, ADC_SampleTime_55Cycles5);
-	 ADC_RegularChannelConfig(ADC1, ADC_Channel_14, 5, ADC_SampleTime_55Cycles5);
-	 ADC_RegularChannelConfig(ADC1, ADC_Channel_15, 6, ADC_SampleTime_55Cycles5);
- 
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_2, 1, ADC_SampleTime_55Cycles5);	//通道，转换次序，转换时间
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_3, 2, ADC_SampleTime_55Cycles5);
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_4, 3, ADC_SampleTime_55Cycles5);
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_10, 4, ADC_SampleTime_55Cycles5);
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_13, 5, ADC_SampleTime_55Cycles5);
+	 ADC_RegularChannelConfig(ADC1, ADC_Channel_14, 6, ADC_SampleTime_55Cycles5); 
 	   
 	 ADC_DMACmd(ADC1, ENABLE);	   
 	 ADC_Cmd(ADC1, ENABLE);

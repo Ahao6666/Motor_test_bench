@@ -17,7 +17,7 @@
 //PWM输出初始化
 //arr：自动重装值
 //psc：时钟预分频数
-void TIM1_PWMout_Init(u16 arr,u16 psc)		//PA8------PWM输出
+void TIM1_PWMout_Init(u16 arr,u16 psc)		//PA11------PWM输出
 {  
 	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
@@ -28,7 +28,7 @@ void TIM1_PWMout_Init(u16 arr,u16 psc)		//PA8------PWM输出
 	                                                                     	
 
    //设置该引脚为复用输出功能,输出TIM1 CH1的PWM脉冲波形
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8; //TIM_CH1
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11; //TIM_CH1
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  //复用推挽输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
@@ -68,11 +68,11 @@ void TIM2_Cap_Init(u16 arr,u16 psc)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);	//使能TIM2时钟
  	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);  //使能GPIOA时钟
 	
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0;  //PA0 清除之前设置  
+	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_3;  //PA0 清除之前设置  
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD; //PA0 输入 
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_ResetBits(GPIOA,GPIO_Pin_0);						 //PA0 下拉
+	GPIO_ResetBits(GPIOA,GPIO_Pin_3);						 //PA0 下拉
 	
 	//初始化定时器2 TIM2	 
 	TIM_TimeBaseStructure.TIM_Period = arr; //设定计数器自动重装值 

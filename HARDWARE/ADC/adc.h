@@ -14,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////// 
 #define Channel_Num  6			//转换通道的数目
 #define Sample_Num  10			//每个通道转换的次数
-extern vu16 ADC_ConvertedValue[Sample_Num][Channel_Num];
+//extern vu16 ADC_ConvertedValue[Sample_Num][Channel_Num];
 
 void Adc_Init(void);
 void ADC_DMA_Config(void);
